@@ -53,8 +53,8 @@ const express = require('express');
 const app = express();
 const rateLimit = require("./ratelimiter/rate_limiter");
 // get route 
-app.get('/', rateLimit(), (req, res) => {
-    const remaining = req.rateLimit && req.rateLimit();  // e.g here it start count to rate limit
+app.get('/', rateLimit(), async (req, res) => {
+    const remaining = req.rateLimit && await req.rateLimit();  // e.g here it start count to rate limit
     res.setHeader('X-Rate-Limit-Remaining', remaining);
     res.json({ status: "ok", message: "I will be counted", time: new Date().toUTCString() });
 });
