@@ -1,5 +1,5 @@
 'use strict';
-const redisClient = require('./../../../config/redis').default;
+const redisClient = require('./index');
 module.exports = {
     for: (key) => {
         const increase = () => {

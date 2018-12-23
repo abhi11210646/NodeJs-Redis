@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "description": "Generalized Rate Limiter for Nodejs",
   "main": "server.js",
-  "script":{
+  "script": {
     "start": "node server.js"
   },
   "repository": "",
   "author": "Abhishek Singh <jonu.1504@gmail.com>",
   "dependencies": {
-    "express": "^4.16.4"
+    "bluebird": "^3.5.3",
+    "express": "^4.16.4",
+    "redis": "^2.8.0"
   }
 }

@@ -1,4 +1,4 @@
-const loginAttemps = require('./rate_limiter.helper');
+const loginAttemps = require('./../redis/redis.helper');
 const tooManyRequests = require('./429.js');
 module.exports = (params = {}) => {
     return async (req, res, next) => {
