@@ -40,3 +40,24 @@ app.get('/', rateLimit({key:"mykey",allowedAttempts:20}), (req, res) => {
 });
 
 ```
+
+### rateLimit() middelware attach a function to req object.
+> Which gives you a more control over rate limiter to execute it on demand, like you want to count request on status 200 or 401 or 503 whatever just put req.rateLimit && req.rateLimit() in code where you want count to increase.
+
+
+```
+
+const express = require('express');
+const app = express();
+const rateLimit = require("./ratelimiter/rate_limiter");
+// get route 
+app.get('/', rateLimit(), (req, res) => {
+    req.rateLimit && req.rateLimit();  // e.g here it start count to rate limit
+    res.json({ status: "ok", message: "I will be counted", time: new Date().toUTCString() });
+});
+
+app.listen(process.env.PORT || 8080, function() {
+    console.log("Server is listening...");
+});
+
+```
